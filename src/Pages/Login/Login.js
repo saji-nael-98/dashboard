@@ -13,13 +13,12 @@ const Login = () => {
 
   const onLoginHandler = (email, password) => {
     login(email, password).then((res) => {
-      alert(res)
-      if (res === 200) {
+      if (res.status === 200) {
         if (
           signIn({
             token: res.token, //Just a random token
             tokenType: "Bearer", // Token type set as Bearer
-            authState: { email: email, password: password }, // Dummy auth user state
+            authState: { email: email, password: password,roles:res.roles }, // Dummy auth user state
             expiresIn: 120, // Token Expriration time, in minutes
           })
         ) {
@@ -30,7 +29,7 @@ const Login = () => {
           alert("Error Occoured. Try Again");
         }
       }else{
-        alert(res)
+        alert(JSON.stringify(res))
       } 
     });
   };
