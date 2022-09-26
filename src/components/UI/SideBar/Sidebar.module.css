@@ -1,10 +1,17 @@
-.sidebar{
-    overflow: 'auto';
-    height: '100vh';
-    position: 'fixed';
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background-color: red;
-    width: 280px;
+.sidebar {
+  background-color: var(--sidebar-color);
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  height: 50px;
+  color: whitesmoke;
+}
+
+@media screen and (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    height: 100vh;
+  }
 }

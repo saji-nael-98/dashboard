@@ -7,8 +7,14 @@ export const login = async (email, password) => {
       password: password,
     });
     const data = await response.data;
-    return data;
+
+    return {
+      status: 200,
+      ...data,
+    };
   } catch (err) {
-    return err.request.status;
+    return {
+      status: err.request.status,
+    };
   }
 };

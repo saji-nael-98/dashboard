@@ -1,10 +1,12 @@
-import Sider from "antd/lib/layout/Sider";
+import SidebarMenu from "./SidebarMenu";
 import styles from "./Sidebar.module.css";
+
 const Sidebar = () => {
+  console.log(100)
   return (
-    <Sider id="sidebar" className={styles.sidebar}>
-      sadasd
-    </Sider>
+    <aside className={styles.sidebar}>
+      <SidebarMenu />
+    </aside>
   );
 };
 export default Sidebar;
