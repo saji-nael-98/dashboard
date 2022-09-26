@@ -5,25 +5,37 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import SecureComponent from "./components/UI/SecureComponent/SecureComponent";
 import Sidebar from "./components/UI/SideBar/Sidebar";
+import Products from "./Pages/Products/Products";
 
 const RoutesComponent = () => {
-  const isAuthenticated = useIsAuthenticated()
+  const isAuthenticated = useIsAuthenticated();
   return (
     <BrowserRouter>
-    {isAuthenticated() && <Sidebar/>}
-      <Routes>
-        <Route path={"/"} element={<Home />} />
-        <Route path={"/login"} element={<Login />} />
-        <Route
-          path={"/secure"}
-          element={
-            <RequireAuth loginPath={"/login"}>
-              <SecureComponent />
-            </RequireAuth>
-          }
-        />
-        <Route path="/*" element={<div>404</div>} />
-      </Routes>
+      {isAuthenticated() && <Sidebar />}
+      <div
+        style={{
+          flexGrow: 1,
+          minHeight: "100vh",
+          backgroundColor: "#F5F7FA",
+        }}
+      >
+        {isAuthenticated() && <header></header>}
+        <main>
+          <Routes>
+            <Route path={"/"} element={<Home />} />
+            <Route path={"/login"} element={<Login />} />
+            <Route
+              path={"/products"}
+              element={
+                <RequireAuth loginPath={"/login"}>
+                  <Products />
+                </RequireAuth>
+              }
+            />
+            <Route path="/*" element={<div>404</div>} />
+          </Routes>
+        </main>
+      </div>
     </BrowserRouter>
   );
 };

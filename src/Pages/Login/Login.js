@@ -3,7 +3,7 @@ import { useIsAuthenticated, useSignIn } from "react-auth-kit";
 import { useNavigate, Navigate } from "react-router-dom";
 import { Page } from "../../components/UI/Page/Page";
 import styles from "./Login.module.css";
-import { Section } from "../../components/UI/Section/Section";
+import  Section  from "../../components/UI/Section/Section";
 import { LoginForm } from "../../components/LoginForm/LoginForm";
 import { login } from "../../service/Auth";
 const Login = () => {
