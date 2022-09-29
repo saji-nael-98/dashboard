@@ -1,39 +1,44 @@
+/*
+note:
+1:right
+2:left
+*/
 #login-page {
-    display: flex;
-    background-color: #F3F4F6;
+  display: flex;
+  flex-direction: row;
+  background-color: #f3f4f6;
+}
+#login-page > * {
+  width: 50%;
+}
+#login-page > :nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#login-page > div:nth-child(1) {
+  background: radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assests/images/background.svg");
 }
 
-#login-page .welcome, #login-page .login {
-    width: 50%;
+#login-page > :nth-child(2) h3,
+#login-page > :nth-child(2) h5 {
+  margin: 5px;
+  text-align: center;
 }
 
-#login-page .welcome {
-    background: radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assests/images/background.svg');
+#login-page > :nth-child(2) h5 {
+  opacity: 0.5;
+  font-weight: normal;
 }
 
-#login-page .login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
+@media only screen and (max-width: 991px) {
+  #login-page > div:nth-child(1) {
+    display: none;
+  }
 
-#login-page .login h3, #login-page .login h5 {
-    margin: 5px;
-}
-
-#login-page .login h5 {
-    opacity: 0.5;
-    font-weight: normal;
-}
-
-@media only screen and (max-width:991px) {
-    #login-page .welcome {
-        display: none;
-    }
-
-    #login-page .login {
-        width: 100%;
-    }
+  #login-page > :nth-child(2) {
+    width: 100%;
+  }
 }

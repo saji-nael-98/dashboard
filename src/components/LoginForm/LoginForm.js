@@ -26,7 +26,7 @@ export const LoginForm = (props) => {
       onSubmit={onSubmitHandler}
     >
       {({ errors, touched }) => (
-        <Form>
+        <Form style={styles.form}>
           <Field
             name="email"
             render={({ field, form: { touched, errors } }) => (

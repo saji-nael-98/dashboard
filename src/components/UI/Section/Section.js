@@ -1,13 +1,15 @@
-import React from "react";
-import styles from "./Section.module.css";
+
+import { memo } from "react";
+
 const Section = (props) => {
   return (
     <section
-      className={`${styles["section"]} ${props.className || ""}`}
-      {...props}
+      style={props.style || null}
+      id={props.id || null}
+      className={props.className || null}
     >
       {props.children}
     </section>
   );
 };
-export default Section;
+export default memo(Section)
