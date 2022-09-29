@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 const CustomTable = (props) => {
   return (
     <Card>
-      <Table columns={props.columns} dataSource={props.data}/>
+      <Table className={styles['c-table']} columns={props.columns} dataSource={props.data}/>
     </Card>
   );
 };
