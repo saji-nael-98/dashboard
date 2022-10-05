@@ -22,7 +22,6 @@ const RoutesComponent = () => {
           backgroundColor: "#F5F7FA",
         }}
       >
-        
         {isAuthenticated() && (
           <Sider trigger={null} collapsible collapsed={collapsed}>
             <Menu
@@ -59,7 +58,7 @@ const RoutesComponent = () => {
                   </RequireAuth>
                 }
               />
-               <Route
+              <Route
                 path={"/products"}
                 element={
                   <RequireAuth loginPath={"/login"}>
