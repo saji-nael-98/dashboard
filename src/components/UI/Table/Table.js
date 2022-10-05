@@ -1,13 +1,20 @@
-import { Space, Table, Tag } from 'antd';
+import { Table } from "antd";
 import React from "react";
-import Card from "../Card/Card";
-import styles from "./Table.module.css";
-import 'antd/dist/antd.css';
-const CustomTable = (props) => {
+const CTable = (props) => {
   return (
-    <Card>
-      <Table className={styles['c-table']} columns={props.columns} dataSource={props.data}/>
-    </Card>
+    <div>
+      <section>
+        <div>
+          <h4>{props.title}</h4>
+        </div>
+        <div></div>
+      </section>
+      <Table
+        pagination={{ pageSize: props.size || 5 }}
+        columns={props.columns}
+        dataSource={props.data}
+      />
+    </div>
   );
 };
-export default CustomTable;
+export default CTable;
