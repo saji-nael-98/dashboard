@@ -1,15 +1,16 @@
-
 import { memo } from "react";
-
+import styled from "styled-components";
+import { gray } from "../../../assests/color/color";
+const StyledSection = styled.section`
+  padding: 0.7rem 1.1rem;
+  margin: 0.7rem 0;
+  background-color: ${(props) => props.backgroundColor};
+`;
 const Section = (props) => {
   return (
-    <section
-      style={props.style || null}
-      id={props.id || null}
-      className={props.className || null}
-    >
+    <StyledSection backgroundColor={"white"} id={props.id || null}>
       {props.children}
-    </section>
+    </StyledSection>
   );
 };
-export default memo(Section)
+export default memo(Section);

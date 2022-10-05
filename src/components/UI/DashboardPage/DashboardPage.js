@@ -1,16 +1,17 @@
 import React from "react";
+import styled from "styled-components";
+import { gray } from "../../../assests/color/color";
 import Section from "../Section/Section";
-import styles from "./DashboardPage.module.css";
+const Page = styled.div`
+  background-color: ${(props) => props.backgroundColor};
+  min-height: ${(props) => (props.fullWidth ? "100vh" : "auto")};
+`;
+
 const DashboardPage = (props) => {
   return (
-    <div className={styles["dashboard-page"]}>
-      <Section>
-        <h1>{props.title}</h1>
-      </Section>
-      {
-        props.children
-      }
-    </div>
+    <Page backgroundColor={gray} fullWidth={props.fullWidth || false}>
+      {props.children}
+    </Page>
   );
 };
 export default DashboardPage;
