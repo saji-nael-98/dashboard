@@ -22,6 +22,7 @@ const RoutesComponent = () => {
           backgroundColor: "#F5F7FA",
         }}
       >
+        
         {isAuthenticated() && (
           <Sider trigger={null} collapsible collapsed={collapsed}>
             <Menu
