@@ -21,7 +21,6 @@ const CButton = (props) => {
       id={props.id}
       htmlType={props.type || "button"}
       onClick={props.onClick || ""}
-      shape={"round"}
       size="large"
       disabled={props.loading || false}
       loading={props.loading || false}

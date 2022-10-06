@@ -11,6 +11,8 @@ import { Menu, Space } from "antd";
 import Products from "../Pages/Products/Products";
 
 import Sidebar from "../components/UI/SideBar/Sidebar";
+import CHeader from "../components/UI/Header/CHeader";
+import CFooter from "../components/UI/Footer/CFooter";
 
 const RoutesComponent = () => {
   const isAuthenticated = useIsAuthenticated();
@@ -26,10 +28,7 @@ const RoutesComponent = () => {
         {isAuthenticated() && <Sidebar />}
 
         <Layout>
-          {isAuthenticated() && (
-            <Header style={{ backgroundColor: "white" }}></Header>
-          )}
-
+          <CHeader isAuthenticated={isAuthenticated()} />
           <Content>
             <Routes>
               <Route path={"/login"} element={<Login />} />
@@ -52,14 +51,7 @@ const RoutesComponent = () => {
               <Route path="/*" element={<div>404</div>} />
             </Routes>
           </Content>
-
-          {isAuthenticated() && (
-            <Footer>
-              <Space>
-                <div>لوحة التحكم &copy; 2023</div>
-              </Space>
-            </Footer>
-          )}
+          <CFooter isAuthenticated={isAuthenticated()} />
         </Layout>
       </Layout>
     </BrowserRouter>
