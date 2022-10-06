@@ -42,7 +42,7 @@ const Products = () => {
   return (
     <DashboardPage>
       <Section>
-        <CTable title={"البضاعة"} columns={columns}  />
+        <CTable title={"البضاعة"} columns={columns} />
       </Section>
     </DashboardPage>
   );

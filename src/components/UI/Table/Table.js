@@ -1,20 +1,33 @@
 import { Table } from "antd";
 import React from "react";
+import styled from "styled-components";
+import CButton from "../Button/Button";
+
+const TableContainer = styled.div`
+  & .table-container__filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0;
+  }
+`;
 const CTable = (props) => {
   return (
-    <div>
-      <section>
+    <TableContainer>
+      <section className="table-container__filter">
         <div>
-          <h4>{props.title}</h4>
+          <h2>{props.title}</h2>
         </div>
-        <div></div>
+        <div>
+          <CButton onClick={() => {}}>اضافة جديد</CButton>
+        </div>
       </section>
       <Table
         pagination={{ pageSize: props.size || 5 }}
         columns={props.columns}
         dataSource={props.data}
       />
-    </div>
+    </TableContainer>
   );
 };
 export default CTable;
