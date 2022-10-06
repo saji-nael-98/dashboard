@@ -1,18 +1,19 @@
 import React from "react";
 import { RequireAuth, useIsAuthenticated } from "react-auth-kit";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Layout, { Content, Footer, Header } from "antd/lib/layout/layout";
 import Sider from "antd/lib/layout/Sider";
 import { useState } from "react";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { Menu } from "antd";
+import { Menu, Space } from "antd";
 import Products from "../Pages/Products/Products";
+
+import Sidebar from "../components/UI/SideBar/Sidebar";
 
 const RoutesComponent = () => {
   const isAuthenticated = useIsAuthenticated();
-  const [collapsed, setCollapsed] = useState(false);
   return (
     <BrowserRouter>
       <Layout
@@ -22,30 +23,12 @@ const RoutesComponent = () => {
           backgroundColor: "#F5F7FA",
         }}
       >
-        {isAuthenticated() && (
-          <Sider trigger={null} collapsible collapsed={collapsed}>
-            <Menu
-              theme="dark"
-              mode="vertical"
-              defaultSelectedKeys={["1"]}
-              items={[
-                {
-                  key: "1",
-                  icon: <AiOutlineUserAdd />,
-                  label: "nav 1",
-                },
-                {
-                  key: "2",
-                  icon: <AiOutlineUserAdd />,
-                  label: "nav 1",
-                },
-              ]}
-            />
-          </Sider>
-        )}
+        {isAuthenticated() && <Sidebar />}
 
         <Layout>
-          {isAuthenticated() && <Header></Header>}
+          {isAuthenticated() && (
+            <Header style={{ backgroundColor: "white" }}></Header>
+          )}
 
           <Content>
             <Routes>
@@ -70,14 +53,15 @@ const RoutesComponent = () => {
             </Routes>
           </Content>
 
-          {isAuthenticated() && <Footer></Footer>}
+          {isAuthenticated() && (
+            <Footer>
+              <Space>
+                <div>لوحة التحكم &copy; 2023</div>
+              </Space>
+            </Footer>
+          )}
         </Layout>
       </Layout>
-
-      <div>
-        {isAuthenticated() && <header></header>}
-        <main></main>
-      </div>
     </BrowserRouter>
   );
 };
