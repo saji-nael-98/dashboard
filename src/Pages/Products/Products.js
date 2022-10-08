@@ -1,7 +1,7 @@
-import { Button, Space, Spin } from "antd";
+import { Button, Space } from "antd";
 import React, { useEffect, useState } from "react";
 import { useCallback } from "react";
-import { useAuthHeader, useAuthUser } from "react-auth-kit";
+import { useAuthHeader } from "react-auth-kit";
 import DashboardPage from "../../components/UI/DashboardPage/DashboardPage";
 import Section from "../../components/UI/Section/Section";
 import CTable from "../../components/UI/Table/Table";
@@ -9,11 +9,11 @@ import useHttp from "../../hooks/use-http";
 
 const Products = () => {
   const [data, setData] = useState([]);
-  const { isLoading, error, sendRequest: sendRequest } = useHttp();
+  const { sendRequest } = useHttp();
   const authHeader = useAuthHeader();
   const onDone = useCallback((response) => {
     setData((prevState) => {
-      const result = prevState.filter((record) => record.id != response.id);
+      const result = prevState.filter((record) => record.id !== response.id);
       return result;
     });
   }, []);
@@ -27,7 +27,7 @@ const Products = () => {
       },
       setData
     );
-  }, [sendRequest]);
+  }, [sendRequest,authHeader]);
 
   const columns = [
     {

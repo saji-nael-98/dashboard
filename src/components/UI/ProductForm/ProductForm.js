@@ -1,4 +1,4 @@
-import { Alert, Col, Form, Input, InputNumber, Row, Select } from "antd";
+import { Alert,  Form, Input, InputNumber, Select } from "antd";
 import { useAuthHeader } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
 import useHttp from "../../../hooks/use-http";
@@ -8,7 +8,7 @@ const { Option } = Select;
 
 const ProductForm = () => {
   const [form] = Form.useForm();
-  const { isLoading, error, sendRequest: sendRequest } = useHttp();
+  const { isLoading, error, sendRequest } = useHttp();
   const authHeader = useAuthHeader();
   const navigate = useNavigate();
   const onDone = (response) => {

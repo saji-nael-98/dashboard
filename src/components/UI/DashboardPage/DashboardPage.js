@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { gray } from "../../../assests/color/color";
-import Section from "../Section/Section";
 const Page = styled.div`
   background-color: ${(props) => props.backgroundColor};
   min-height: ${(props) => (props.fullWidth ? "100vh" : "85vh")};

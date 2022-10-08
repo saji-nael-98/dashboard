@@ -1,8 +1,7 @@
 import { Dropdown, Menu } from "antd";
 import React from "react";
 import styled from "styled-components";
-import { DownOutlined, UserOutlined } from "@ant-design/icons";
-import { Link, useNavigate } from "react-router-dom";
+import {  UserOutlined } from "@ant-design/icons";
 import { useSignOut } from "react-auth-kit";
 
 const StyledNavbar = styled.nav`
@@ -14,7 +13,6 @@ const StyledNavbar = styled.nav`
 `;
 const Navbar = () => {
   const signOut = useSignOut();
-
   const menu = (
     <Menu
       items={[

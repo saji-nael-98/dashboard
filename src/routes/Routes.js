@@ -1,6 +1,6 @@
 import React from "react";
 import { useIsAuthenticated } from "react-auth-kit";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Layout, { Content } from "antd/lib/layout/layout";

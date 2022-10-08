@@ -22,7 +22,6 @@ const useHttp = () => {
         }
         case 403: {
           throw new Error("العملية غير مسموحة");
-          break;
         }
         default: {
           throw new Error("فشل الطلب !");

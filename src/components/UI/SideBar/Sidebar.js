@@ -10,7 +10,7 @@ import {
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { gray, yellow } from "../../../assests/color/color";
+import { yellow } from "../../../assests/color/color";
 const StyledMenuItem = styled(Menu.Item)`
   &.ant-menu-item-selected {
     background-color: ${yellow} !important;
@@ -24,7 +24,6 @@ const StyledMenuItem = styled(Menu.Item)`
   & a:hover {
     opacity: 1;
     color: white;
-   
   }
   &:hover {
   }

@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useIsAuthenticated, useSignIn } from "react-auth-kit";
 import { useNavigate, Navigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import Section from "../../components/UI/Section/Section";
 import { LoginForm } from "../../components/LoginForm/LoginForm";
 import Layout from "antd/lib/layout/layout";
-import { useCallback } from "react";
-import { Alert } from "antd";
 const Login = () => {
   const isAuthenticated = useIsAuthenticated();
   const signIn = useSignIn();
