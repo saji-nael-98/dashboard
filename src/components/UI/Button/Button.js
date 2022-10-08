@@ -3,16 +3,18 @@ import styled from "styled-components";
 import { yellow } from "../../../assests/color/color";
 const BTN = styled(Button)`
   background-color: ${yellow};
-  color: white;
+  color: black;
   cursor: pointer;
+  border:none;
   :hover {
     background-color: ${yellow};
     opacity: 0.8;
-    color: white;
+    color: black;
+    
   }
   :focus {
     background-color: ${yellow};
-    color: white;
+    color: black;
   }
 `;
 const CButton = (props) => {

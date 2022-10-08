@@ -1,80 +1,53 @@
-import { Alert, Form, Input, InputNumber, Select } from "antd";
+import { Alert, Col, Form, Input, InputNumber, Row, Select } from "antd";
 import { useAuthHeader } from "react-auth-kit";
+import { useNavigate } from "react-router-dom";
 import useHttp from "../../../hooks/use-http";
 import CButton from "../Button/Button";
+import styles from "./ProductForm.module.css";
 const { Option } = Select;
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 3,
-    },
-  },
-  wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 16,
-    },
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 3,
-    },
-  },
-};
 
 const ProductForm = () => {
   const [form] = Form.useForm();
   const { isLoading, error, sendRequest: sendRequest } = useHttp();
   const authHeader = useAuthHeader();
-  const done=(test)=>{
-
-  }
-  const onFinish = (values) => {
-  
+  const navigate = useNavigate();
+  const onDone = (response) => {
+    navigate(-1);
+  };
+  const onSubmit = (values) => {
     sendRequest(
       {
         url: "/api/product",
-        method:'POST',
+        method: "POST",
         headers: {
           Authorization: authHeader(),
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body:{...values}
+        body: { ...values },
       },
-      done
+      onDone
     );
   };
   return (
     <>
-     {error && <Alert message={error} type="error" />}
+      {error && <Alert message={error} type="error" />}
       <Form
-        layout="horizontal"
-        labelWrap
         form={form}
-        onFinish={onFinish}
+        layout="vertical"
+        onFinish={onSubmit}
         scrollToFirstError
+        labelAlign="right"
+        id={styles["product-form"]}
       >
-        <h4
-          style={{
-            margin: "0.8rem 0",
-          }}
-        >
-          المعلومات الاساسية
-        </h4>
+        <div className={styles["form-header"]}>
+          <h3>المعلومات الاساسية</h3>
+          <CButton loading={isLoading} type="submit">
+            حفظ
+          </CButton>
+        </div>
         <Form.Item
+          className={styles["form-controller"]}
           name="name"
           label="الاسم"
           rules={[
@@ -88,6 +61,7 @@ const ProductForm = () => {
           <Input placeholder="ادخل الاسم" />
         </Form.Item>
         <Form.Item
+          className={styles["form-controller"]}
           name="category"
           label="الصنف"
           rules={[
@@ -104,6 +78,7 @@ const ProductForm = () => {
           </Select>
         </Form.Item>
         <Form.Item
+          className={styles["form-controller"]}
           name="status"
           label="الحالة"
           rules={[
@@ -119,6 +94,7 @@ const ProductForm = () => {
           </Select>
         </Form.Item>
         <Form.Item
+          className={styles["form-controller"]}
           name="description"
           label="وصف"
           rules={[
@@ -131,6 +107,7 @@ const ProductForm = () => {
           <Input.TextArea maxLength={100} />
         </Form.Item>
         <Form.Item
+          className={styles["form-controller"]}
           name="inStock"
           label="الكمية"
           rules={[
@@ -143,6 +120,7 @@ const ProductForm = () => {
           <InputNumber min={0} />
         </Form.Item>
         <Form.Item
+          className={styles["form-controller"]}
           name="price"
           label="السعر"
           rules={[
@@ -153,9 +131,6 @@ const ProductForm = () => {
           ]}
         >
           <InputNumber min={0} />
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          <CButton loading={isLoading} type="submit">حفظ</CButton>
         </Form.Item>
       </Form>
     </>
