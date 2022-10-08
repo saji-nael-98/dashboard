@@ -7,14 +7,15 @@ const useHttp = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const rawResponse = await fetch("http://localhost:9002/api/auth/signIn", {
+      const rawResponse = await fetch(requestConfig.url, {
         method: requestConfig.method ? requestConfig.method : "GET",
         headers: requestConfig.headers ? requestConfig.headers : {},
         body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
       });
 
       switch (rawResponse.status) {
-        case 200: {
+        case 200:{}
+        case 201: {
           const data = await rawResponse.json();
           applyData(data);
           break;
@@ -28,7 +29,7 @@ const useHttp = () => {
         }
       }
     } catch (err) {
-      setError(err.message || "Something went wrong!");
+      setError("فشل الطلب !");
     }
     setIsLoading(false);
   }, []);

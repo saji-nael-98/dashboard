@@ -1,5 +1,6 @@
 import { Table } from "antd";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import CButton from "../Button/Button";
 
@@ -19,7 +20,9 @@ const CTable = (props) => {
           <h2>{props.title}</h2>
         </div>
         <div>
-          <CButton onClick={() => {}}>اضافة جديد</CButton>
+          <CButton>
+            <Link to={'/products/new'}>اضافة جديد</Link>
+          </CButton>
         </div>
       </section>
       <Table

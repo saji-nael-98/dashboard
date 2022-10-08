@@ -2,17 +2,19 @@ import { Button } from "antd";
 import styled from "styled-components";
 import { yellow } from "../../../assests/color/color";
 const BTN = styled(Button)`
-  background-color: ${(props) => props.backgroundColor};
-  color: white;
+  background-color: ${yellow};
+  color: black;
   cursor: pointer;
+  border:none;
   :hover {
-    background-color: ${(props) => props.backgroundColor};
+    background-color: ${yellow};
     opacity: 0.8;
-    color: white;
+    color: black;
+    
   }
   :focus {
-    background-color: ${(props) => props.backgroundColor};
-    color: white;
+    background-color: ${yellow};
+    color: black;
   }
 `;
 const CButton = (props) => {
@@ -20,11 +22,10 @@ const CButton = (props) => {
     <BTN
       id={props.id}
       htmlType={props.type || "button"}
-      onClick={props.onClick || ""}
+      onClick={props.onClick || null}
       size="large"
       disabled={props.loading || false}
       loading={props.loading || false}
-      backgroundColor={yellow}
     >
       {props.children}
     </BTN>

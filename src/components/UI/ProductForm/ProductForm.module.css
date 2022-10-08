@@ -1,0 +1,12 @@
+#product-form {
+  width: 100%;
+}
+#product-form .form-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+}
+#product-form .form-controller {
+  min-width: calc(100%-10px);
+  max-width: 300px;
+}

@@ -9,15 +9,38 @@ import {
   DatabaseOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-
-const Sidebar = () => {
+import styled from "styled-components";
+import { gray, yellow } from "../../../assests/color/color";
+const StyledMenuItem = styled(Menu.Item)`
+  &.ant-menu-item-selected {
+    background-color: ${yellow} !important;
+  }
+  & a {
+    display: block;
+    color: white;
+    opacity: 0.75;
+    width: 100%;
+  }
+  & a:hover {
+    opacity: 1;
+    color: white;
+   
+  }
+  &:hover {
+  }
+`;
+const Sidebar = (props) => {
   const [collapsed, setCollapsed] = useState(false);
+  if (!props.isAuthenticated) {
+    return;
+  }
   function getItem(label, link, key, icon, children) {
     return {
       key,
       icon,
       children,
-      label: <Link to={link}>{label}</Link>,
+      label: label,
+      link: link,
     };
   }
 
@@ -40,12 +63,16 @@ const Sidebar = () => {
           height: 60,
         }}
       ></div>
-      <Menu
-        theme="dark"
-        defaultSelectedKeys={["1"]}
-        mode="inline"
-        items={items}
-      />
+      <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+        {items.map((item, index) => (
+          <StyledMenuItem key={index}>
+            <Link to={item.link}>
+              {item.icon}
+              <span>{item.label}</span>
+            </Link>
+          </StyledMenuItem>
+        ))}
+      </Menu>
     </Sider>
   );
 };
