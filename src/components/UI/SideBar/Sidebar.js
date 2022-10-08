@@ -10,8 +10,11 @@ import {
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const [collapsed, setCollapsed] = useState(false);
+  if (!props.isAuthenticated) {
+    return;
+  }
   function getItem(label, link, key, icon, children) {
     return {
       key,

@@ -6,7 +6,9 @@ const CFooter = (props) => {
     return;
   }
   return (
-    <Footer>
+    <Footer style={{
+      zIndex:1
+    }}>
       <Space>
         <div>لوحة التحكم &copy; 2023</div>
       </Space>

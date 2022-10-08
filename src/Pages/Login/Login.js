@@ -15,7 +15,7 @@ const Login = () => {
     if (
       signIn({
         token: user.token, //Just a random token
-        tokenType: "Bearer", // Token type set as Bearer
+        tokenType: "Bearer ", // Token type set as Bearer
         authState: {
           username: user.username,
           password: user.password,
