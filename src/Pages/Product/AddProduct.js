@@ -1,10 +1,10 @@
 import DashboardPage from "../../components/UI/DashboardPage/DashboardPage";
-import ProductForm from "../../components/UI/ProductForm/ProductForm";
+import ProductForm from "../../components/ProductForm/ProductForm";
 import Section from "../../components/UI/Section/Section";
 
 const AddProduct = () => {
   return (
-    <DashboardPage>
+    <DashboardPage title='اضافة منتج' links={[]}>
       <Section>
         <ProductForm />
       </Section>

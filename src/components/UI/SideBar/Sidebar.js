@@ -7,20 +7,24 @@ import {
   ShoppingCartOutlined,
   MessageOutlined,
   DatabaseOutlined,
+  RocketOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { yellow } from "../../../assests/color/color";
+import { useSelector } from "react-redux";
 const StyledMenuItem = styled(Menu.Item)`
   &.ant-menu-item-selected {
     background-color: ${yellow} !important;
   }
+
   & a {
     display: block;
     color: white;
     opacity: 0.75;
     width: 100%;
   }
+  &.ant-menu-item-selected a,
   & a:hover {
     opacity: 1;
     color: white;
@@ -28,9 +32,10 @@ const StyledMenuItem = styled(Menu.Item)`
   &:hover {
   }
 `;
-const Sidebar = (props) => {
+const Sidebar = () => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [collapsed, setCollapsed] = useState(false);
-  if (!props.isAuthenticated) {
+  if (!isAuthenticated) {
     return;
   }
   function getItem(label, link, key, icon, children) {
@@ -46,6 +51,7 @@ const Sidebar = (props) => {
   const items = [
     getItem("لوحة التحكم", "/", "1", <PieChartOutlined />),
     getItem("البضاعة", "/products", "2", <DatabaseOutlined />),
+    getItem("العروض", "/offers", "7", <RocketOutlined />),
     getItem("العملاء", "/customers", "4", <UserOutlined />),
     getItem("الطلبات", "/orders", "5", <ShoppingCartOutlined />),
     getItem("التعليقات", "/reviews", "6", <MessageOutlined />),
@@ -60,8 +66,19 @@ const Sidebar = (props) => {
       <div
         style={{
           height: 60,
+          display:'flex',
+          alignItems:'center'
         }}
-      ></div>
+      >
+        <h2
+          style={{
+            color: "white",
+            margin:'0 auto'
+          }}
+        >
+          لوحة التحكم
+        </h2>
+      </div>
       <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
         {items.map((item, index) => (
           <StyledMenuItem key={index}>

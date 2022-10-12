@@ -1,6 +1,10 @@
 form {
   width: 50%;
 }
+form .form-action {
+  display: flex;
+  justify-content: flex-end;
+}
 @media only screen and (max-width: 900px) {
   form {
     width: 75%;

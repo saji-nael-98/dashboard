@@ -1,6 +1,12 @@
-import { RequireAuth } from "react-auth-kit";
+import { memo } from "react";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 const SecureComponent = (props) => {
-  return <RequireAuth loginPath={"/login"}>{props.element}</RequireAuth>;
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  if (!isAuthenticated) {
+    return <Navigate to={"/login"} />;
+  }
+  return props.element;
 };
-export default SecureComponent;
+export default memo(SecureComponent);

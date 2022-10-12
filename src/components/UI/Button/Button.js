@@ -1,20 +1,21 @@
+import { memo } from "react";
 import { Button } from "antd";
 import styled from "styled-components";
 import { yellow } from "../../../assests/color/color";
 const BTN = styled(Button)`
   background-color: ${yellow};
-  color: black;
+  color: white;
   cursor: pointer;
-  border:none;
+  border: none;
+  font-size: 1rem;
   :hover {
     background-color: ${yellow};
     opacity: 0.8;
-    color: black;
-    
+    color: white;
   }
   :focus {
     background-color: ${yellow};
-    color: black;
+    color: white;
   }
 `;
 const CButton = (props) => {
@@ -31,4 +32,4 @@ const CButton = (props) => {
     </BTN>
   );
 };
-export default CButton;
+export default memo(CButton);

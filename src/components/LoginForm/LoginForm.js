@@ -1,21 +1,9 @@
-import { Form, Formik, Field } from "formik";
 import styles from "./LoginForm.module.css";
-import * as Yup from "yup";
-import { FormControl } from "../UI/FormControl/FormControl";
-import { FormInput } from "../UI/FormInput/FormInput";
-import CButton from "../UI/Button/Button";
-import { Alert } from "antd";
+import { Alert, Form, Input } from "antd";
 import useHttp from "../../hooks/use-http";
-const initialValue = {
-  username: "",
-  password: "",
-};
+import CButton from "../UI/Button/Button";
 export const LoginForm = (props) => {
   const { isLoading, error, sendRequest: sendUserData } = useHttp();
-  const loginSchema = Yup.object().shape({
-    username: Yup.string().email("الايميل غير صالح").required("مطلوبة!"),
-    password: Yup.string().min(6, "قصيرة جدا!!").required("مطلوبة!"),
-  });
   const loginUser = function (userData) {
     let user = {
       username: this.username,
@@ -43,46 +31,41 @@ export const LoginForm = (props) => {
   return (
     <>
       {error && <Alert message={error} type="error" />}
-      <Formik
-        initialValues={initialValue}
-        validationSchema={loginSchema}
-        onSubmit={onSubmitHandler}
+      <Form
+        layout="vertical"
+        onFinish={onSubmitHandler}
+        style={styles.form}
+        requiredMark={false}
       >
-        {({ errors, touched }) => (
-          <Form style={styles.form}>
-            <Field
-              name="username"
-              render={({ field, form: { touched, errors } }) => (
-                <FormInput
-                  label={"البريد الالكتروني"}
-                  field={field}
-                  touched={touched}
-                  errors={errors}
-                  placeholder="ادخل البريد الالكتروني"
-                />
-              )}
-            />
-            <Field
-              name="password"
-              render={({ field, form: { touched, errors } }) => (
-                <FormInput
-                  label={"كلمة السر"}
-                  field={field}
-                  touched={touched}
-                  errors={errors}
-                  type="password"
-                  placeholder="ادخل كلمة المرور"
-                />
-              )}
-            />
-            <FormControl id={styles["login-form__form-action"]}>
-              <CButton loading={isLoading} type="submit">
-                تسجيل الدخول
-              </CButton>
-            </FormControl>
-          </Form>
-        )}
-      </Formik>
+        <Form.Item
+          rules={[
+            {
+              required: true,
+              message: "الرجاء ادخل اسم المستخدم او الايميل",
+            },
+          ]}
+          name={"username"}
+          label="أسم المستخدم/الايميل"
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          rules={[
+            {
+              required: true,
+              message: "الرجاء ادخل كلمة المرور",
+              min: 6,
+            },
+          ]}
+          name="password"
+          label="كلمة السرية"
+        >
+          <Input.Password min={6} />
+        </Form.Item>
+        <Form.Item className={styles["form-action"]}>
+          <CButton loading={isLoading} type="submit">تسجيل الدخول</CButton>
+        </Form.Item>
+      </Form>
     </>
   );
 };

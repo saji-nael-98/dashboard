@@ -1,8 +1,9 @@
 import { Dropdown, Menu } from "antd";
 import React from "react";
 import styled from "styled-components";
-import {  UserOutlined } from "@ant-design/icons";
-import { useSignOut } from "react-auth-kit";
+import { UserOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../../store/auth-slice";
 
 const StyledNavbar = styled.nav`
   height: 100%;
@@ -12,7 +13,7 @@ const StyledNavbar = styled.nav`
   align-items: center;
 `;
 const Navbar = () => {
-  const signOut = useSignOut();
+  const dispatch = useDispatch();
   const menu = (
     <Menu
       items={[
@@ -43,7 +44,7 @@ const Navbar = () => {
           placement="bottom"
           icon={<UserOutlined />}
           onClick={() => {
-            signOut();
+            dispatch(authActions.logout());
           }}
         >
           تسجيل الخروج

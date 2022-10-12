@@ -1,6 +1,5 @@
 import React from "react";
-import { useIsAuthenticated } from "react-auth-kit";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Layout, { Content } from "antd/lib/layout/layout";
@@ -10,9 +9,11 @@ import CHeader from "../components/UI/Header/CHeader";
 import CFooter from "../components/UI/Footer/CFooter";
 import SecureComponent from "./SecureComponent";
 import AddProduct from "../Pages/Product/AddProduct";
+import { useSelector } from "react-redux";
 
 const RoutesComponent = () => {
-  const isAuthenticated = useIsAuthenticated();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   return (
     <BrowserRouter>
       <Layout
@@ -22,9 +23,9 @@ const RoutesComponent = () => {
           backgroundColor: "#F5F7FA",
         }}
       >
-       <Sidebar isAuthenticated={isAuthenticated()} />
+        <Sidebar isAuthenticated={isAuthenticated} />
         <Layout>
-          <CHeader isAuthenticated={isAuthenticated()} />
+          <CHeader/>
           <Content>
             <Routes>
               <Route path={"/login"} element={<Login />} />
@@ -42,10 +43,9 @@ const RoutesComponent = () => {
                   element={<SecureComponent element={<AddProduct />} />}
                 />
               </Route>
-              <Route path="/*" element={<div>404</div>} />
+              <Route path="/test" element={<div>404</div>} />
             </Routes>
           </Content>
-          <CFooter isAuthenticated={isAuthenticated()} />
         </Layout>
       </Layout>
     </BrowserRouter>

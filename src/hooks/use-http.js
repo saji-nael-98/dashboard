@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useCallback, useState } from "react";
 
 const useHttp = () => {
@@ -12,9 +13,8 @@ const useHttp = () => {
         headers: requestConfig.headers ? requestConfig.headers : {},
         body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
       });
-
       switch (rawResponse.status) {
-        case 200:{}
+        case 200:
         case 201: {
           const data = await rawResponse.json();
           applyData(data);

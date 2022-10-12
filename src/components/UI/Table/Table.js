@@ -5,26 +5,11 @@ import styled from "styled-components";
 import CButton from "../Button/Button";
 
 const TableContainer = styled.div`
-  & .table-container__filter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.7rem 0;
-  }
+  margin: 0.5rem 0;
 `;
-const CTable = (props) => {
+const CTable = (props) => {  
   return (
     <TableContainer>
-      <section className="table-container__filter">
-        <div>
-          <h2>{props.title}</h2>
-        </div>
-        <div>
-          <CButton>
-            <Link to={'/products/new'}>اضافة جديد</Link>
-          </CButton>
-        </div>
-      </section>
       <Table
         pagination={{ pageSize: props.size || 5 }}
         columns={props.columns}
@@ -33,4 +18,4 @@ const CTable = (props) => {
     </TableContainer>
   );
 };
-export default CTable;
+export default React.memo(CTable);

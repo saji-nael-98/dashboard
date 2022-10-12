@@ -1,16 +1,17 @@
-import { Alert,  Form, Input, InputNumber, Select } from "antd";
-import { useAuthHeader } from "react-auth-kit";
+import { Alert, Form, Input, InputNumber, Select } from "antd";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import useHttp from "../../../hooks/use-http";
-import CButton from "../Button/Button";
+import useHttp from "../../hooks/use-http";
+import CButton from "../UI/Button/Button";
 import styles from "./ProductForm.module.css";
 const { Option } = Select;
 
 const ProductForm = () => {
   const [form] = Form.useForm();
   const { isLoading, error, sendRequest } = useHttp();
-  const authHeader = useAuthHeader();
   const navigate = useNavigate();
+  const token = useSelector((state) => state.auth.token);
+
   const onDone = (response) => {
     navigate(-1);
   };
@@ -20,7 +21,7 @@ const ProductForm = () => {
         url: "/api/product",
         method: "POST",
         headers: {
-          Authorization: authHeader(),
+          Authorization: "Bearer " + token,
           Accept: "application/json",
           "Content-Type": "application/json",
         },

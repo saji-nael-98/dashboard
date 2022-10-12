@@ -1,8 +1,11 @@
 import { Space } from "antd";
 import { Footer } from "antd/lib/layout/layout";
+import { useSelector } from "react-redux";
 
 const CFooter = (props) => {
-  if (!props.isAuthenticated) {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  if (isAuthenticated) {
     return;
   }
   return (

@@ -1,4 +1,5 @@
 import React from "react";
+import { memo } from "react";
 import styles from "./Card.module.css";
 const Card = (props) => {
   return (
@@ -7,4 +8,4 @@ const Card = (props) => {
     </div>
   );
 };
-export default Card;
+export default memo(Card);
