@@ -1,11 +1,11 @@
-import { Avatar, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import HeaderContent from "./HeaderContent";
 import styles from "./Layout.module.css";
 import { menuItems } from "./MenuList";
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;
 const SidebarContent = () => {
   const navigate = useNavigate();
   const StyledMenu = styled(Menu)`

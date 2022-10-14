@@ -1,5 +1,4 @@
 import { memo } from "react";
-import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 

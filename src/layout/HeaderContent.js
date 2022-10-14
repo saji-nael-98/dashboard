@@ -1,14 +1,11 @@
-import { Avatar, Badge, Dropdown, Menu } from "antd";
+import { Avatar, Badge } from "antd";
 import styled from "styled-components";
 import { AiOutlineUser, AiOutlineNotification } from "react-icons/ai";
-
 import { BiLogOutCircle } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store/auth-slice";
 
 const HeaderContent = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const StyledHeaderContent = styled.div`
     display: flex;
@@ -26,18 +23,6 @@ const HeaderContent = () => {
     {
       label: " تسجيل الخروج ",
       key: "1",
-      icon: (
-        <BiLogOutCircle
-          style={{
-            fontSize: "1rem",
-            marginLeft: 5,
-          }}
-        />
-      ),
-    },
-    {
-      label: " تسجيل الخروج ",
-      key: "2",
       icon: (
         <BiLogOutCircle
           style={{
