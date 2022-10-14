@@ -4,20 +4,19 @@ import { AiOutlineUser, AiOutlineNotification } from "react-icons/ai";
 import { BiLogOutCircle } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store/auth-slice";
-
+const StyledHeaderContent = styled.div`
+  display: flex;
+  & > * {
+    width: 50%;
+  }
+  & > div:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+`;
 const HeaderContent = () => {
   const dispatch = useDispatch();
-  const StyledHeaderContent = styled.div`
-    display: flex;
-    & > * {
-      width: 50%;
-    }
-    & > div:nth-child(2) {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-  `;
 
   const menu = [
     {

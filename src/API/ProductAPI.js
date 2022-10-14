@@ -1,0 +1,1 @@
+export const READ_ALL_PRODUCTS="/api/product/readAll"

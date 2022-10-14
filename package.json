@@ -1,6 +1,7 @@
 {
   "name": "dashboard",
   "version": "0.1.0",
+  "proxy": "http://localhost:9090",
   "private": true,
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
@@ -47,6 +48,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:9090"
+  }
 }
