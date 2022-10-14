@@ -2,35 +2,17 @@ import styles from "./LoginForm.module.css";
 import { Alert, Form, Input } from "antd";
 import useHttp from "../../hooks/use-http";
 import CButton from "../UI/Button/Button";
+import { useDispatch } from "react-redux";
+import { userLogin } from "../../store/action/auth-action";
 export const LoginForm = (props) => {
-  const { isLoading, error, sendRequest: sendUserData } = useHttp();
-  const loginUser = function (userData) {
-    let user = {
-      username: this.username,
-      password: this.password,
-      ...userData,
-    };
-    props.onLogin(user);
-  };
+  const dispatch = useDispatch();
   const onSubmitHandler = (values) => {
     const user = { username: values.username, password: values.password };
-    sendUserData(
-      {
-        url: "http://localhost:9090/api/auth/signIn",
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: user,
-      },
-      loginUser.bind(user)
-    );
+    dispatch(userLogin(user));
   };
 
   return (
     <>
-      {error && <Alert message={error} type="error" />}
       <Form
         layout="vertical"
         onFinish={onSubmitHandler}
@@ -63,7 +45,7 @@ export const LoginForm = (props) => {
           <Input.Password min={6} />
         </Form.Item>
         <Form.Item className={styles["form-action"]}>
-          <CButton loading={isLoading} type="submit">تسجيل الدخول</CButton>
+          <CButton type="submit">تسجيل الدخول</CButton>
         </Form.Item>
       </Form>
     </>
