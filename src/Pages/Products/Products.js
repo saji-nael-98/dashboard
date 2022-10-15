@@ -9,15 +9,16 @@ import { fetchProducts } from "../../store/action/product-action";
 import ProductsStatistic from "./ProductsStatistic";
 import ProductsFilter from "./ProductsFilter";
 import { useState } from "react";
-
 const ProductsPage = () => {
   const products = useSelector((state) => state.products.products);
-  const [productsState, setProductsState] = useState(products);
+  const [productsState, setProductsState] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-
+  useEffect(() => {
+    setProductsState(products);
+  }, [products]);
   return (
     <Page>
       <PageHeader

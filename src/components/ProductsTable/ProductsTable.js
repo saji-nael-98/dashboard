@@ -44,4 +44,4 @@ const columns = [
 const ProductsTable = (props) => {
   return <Table columns={columns} dataSource={props.data || []} />;
 };
-export default React.memo(ProductsTable);
+export default ProductsTable;

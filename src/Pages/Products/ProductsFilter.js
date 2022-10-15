@@ -12,12 +12,11 @@ const ProductsFilter = (props) => {
     props.setProducts(data);
   };
   const onClickSelectHandler = (value) => {
-    if (value === undefined) {
-      props.setProducts(props.products);
-    } else {
-      const data = props.products.filter((item) => item.category == value);
-      props.setProducts(data);
-    }
+    value !== undefined
+      ? props.setProducts(props.products)
+      : props.setProducts(
+          props.products.filter((item) => item.category === value)
+        );
   };
   return (
     <Section>
