@@ -24,6 +24,12 @@ const productsSlice = createSlice({
       );
       state.filteredProducts = data;
     },
+    deleteProduct(state, action) {
+      state.products = state.products.filter(
+        (product) => product.id !== action.payload
+      );
+      state.filteredProducts = state.products;
+    },
     clearFilters(state) {
       state.filteredProducts = state.products;
     },

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { editProduct, getProduct } from "../action/product-action";
+import { deleteProduct, editProduct, getProduct, saveProduct } from "../action/product-action";
 
 const initialState = {
   product: null,
@@ -28,6 +28,15 @@ const productSlice = createSlice({
         state.error = null;
       })
       .addCase(editProduct.rejected, (state, action) => {
+        state.error = action.payload;
+        state.status = "failed";
+      })
+      .addCase(saveProduct.fulfilled, (state, action) => {
+        state.product = action.payload;
+        state.status = "success";
+        state.error = null;
+      })
+      .addCase(saveProduct.rejected, (state, action) => {
         state.error = action.payload;
         state.status = "failed";
       });

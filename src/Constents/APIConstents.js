@@ -5,7 +5,8 @@ export const APiHeaderWithtoken = (token) => {
   };
 };
 //product
-const PRODUCT_URL = "/api/product";
+export const PRODUCT_URL = "/api/product";
 export const SAVE_PRODUCT_URL = `${PRODUCT_URL}`;
 export const READ_PRODUCTS_URL = `${PRODUCT_URL}/readAll`;
 export const READ_PRODUCT_URL = (id) => `${PRODUCT_URL}/${id}`;
+export const DELETE_PRODUCT_URL = (id) => `${PRODUCT_URL}/${id}`;

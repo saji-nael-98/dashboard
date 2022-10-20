@@ -5,12 +5,14 @@ import Card from "../../components/UI/Card/Card";
 import Section from "../../components/UI/Section/Section";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { saveProduct } from "../../store/action/product-action";
 
 const NewProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const saveDataHandler = (values) => {
-  
+    dispatch(saveProduct(values));
+    navigate(-1);
   };
   return (
     <Page>

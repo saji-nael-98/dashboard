@@ -12,7 +12,7 @@ const ProductsPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
+  }, [dispatch]);
   return (
     <Page>
       <PageHeader

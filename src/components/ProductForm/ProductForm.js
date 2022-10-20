@@ -98,7 +98,7 @@ const ProductForm = (props) => {
             <Select>
               {PRODUCT_STATUS.map((item, index) => (
                 <Select.Option value={item} key={index}>
-                  {item.replace("_"," ")}
+                  {item.replace("_", " ")}
                 </Select.Option>
               ))}
             </Select>
@@ -154,7 +154,7 @@ const ProductForm = (props) => {
       <Row>
         <Col lg={lg} xs={xs}>
           <Form.Item>
-            <CButton type="submit">اضافة</CButton>
+            <CButton type="submit">حفظ</CButton>
           </Form.Item>
         </Col>
       </Row>
@@ -175,8 +175,8 @@ ProductForm.prototype = {
 ProductForm.defaultProps = {
   product: {
     name: "",
-    category: 0,
-    status: 0,
+    category: PRODUCT_CATEGORY[0],
+    status: PRODUCT_STATUS[0],
     inStack: 20,
     price: 0,
     description: "",

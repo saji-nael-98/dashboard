@@ -1,17 +1,17 @@
-import { memo } from "react";
 import { BiDollarCircle, BiData } from "react-icons/bi";
 import { Card, Col, Row, Statistic } from "antd";
 import Section from "../../components/UI/Section/Section";
 import { useSelector } from "react-redux";
-
+import { PRODUCTS_SELECTOR } from "../../Constents/SelectorsConstent";
+function calculateTotlePrice(products) {
+  let total = 0;
+  products.forEach((element) => {
+    total += element.price * element.inStack;
+  });
+  return total;
+}
 const ProductsStatistic = () => {
-  const {products} = useSelector((state) => state.products);
-
-  let totalPrice = 0;
-  function calculateTotlePrice(item) {
-    totalPrice += item.price * item.inStack;
-  }
-  products.forEach(calculateTotlePrice);
+  const { products } = useSelector(PRODUCTS_SELECTOR);
   return (
     <Section>
       <Card>
@@ -26,7 +26,7 @@ const ProductsStatistic = () => {
           <Col span={4}>
             <Statistic
               title="المبلغ الاجمالي"
-              value={totalPrice}
+              value={calculateTotlePrice(products)}
               prefix={<BiDollarCircle />}
             />
           </Col>
@@ -35,4 +35,4 @@ const ProductsStatistic = () => {
     </Section>
   );
 };
-export default memo(ProductsStatistic);
+export default ProductsStatistic;
