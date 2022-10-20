@@ -12,7 +12,7 @@ import { CookiesProvider } from 'react-cookie';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <React.StrictMode>
+
     <CookiesProvider>
       <BrowserRouter>
         <ConfigProvider direction="rtl">
@@ -22,7 +22,7 @@ root.render(
         </ConfigProvider>
       </BrowserRouter>
     </CookiesProvider>
-  </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

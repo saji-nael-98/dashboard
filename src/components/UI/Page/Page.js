@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const Page = styled.div`
   height: 100%;
+  overflow-y: auto;
 `;
 export default (props) => {
   return (

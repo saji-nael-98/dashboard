@@ -6,31 +6,31 @@ import HeaderContent from "./HeaderContent";
 import styles from "./Layout.module.css";
 import { menuItems } from "./MenuList";
 const { Header, Sider, Content } = Layout;
+const StyledMenu = styled(Menu)`
+  background-color: #2a3042;
+  color: white;
+  padding: 0;
+  .ant-menu-item {
+    opacity: 0.5;
+  }
+  .ant-menu-item .ant-menu-item-icon {
+    font-size: 1.2rem;
+    position: relative;
+    top: 2.5px;
+  }
+  .ant-menu-item:hover {
+    color: white;
+    background-color: #2a3042 !important;
+    opacity: 1;
+    transition: opacity 1s;
+  }
+  .ant-menu-item-selected {
+    background-color: #2a3042 !important;
+    color: white;
+  }
+`;
 const SidebarContent = () => {
   const navigate = useNavigate();
-  const StyledMenu = styled(Menu)`
-    background-color: #2a3042;
-    color: white;
-    padding: 0;
-    .ant-menu-item {
-      opacity: 0.5;
-    }
-    .ant-menu-item .ant-menu-item-icon {
-      font-size: 1.2rem;
-      position: relative;
-      top: 2.5px;
-    }
-    .ant-menu-item:hover {
-      color: white;
-      background-color: #2a3042 !important;
-      opacity: 1;
-      transition: opacity 1s;
-    }
-    .ant-menu-item-selected {
-      background-color: #2a3042 !important;
-      color: white;
-    }
-  `;
 
   return (
     <>
