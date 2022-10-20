@@ -1,22 +1,24 @@
-import { memo } from "react";
 import { Button, Card, Select, Space } from "antd";
 import Search from "antd/lib/input/Search";
 import Section from "../../components/UI/Section/Section";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { NEW_PRODUCT_PATH } from "../../Constents/RouteConstents";
+import { PRODUCT_CATEGORY } from "../../Constents/ProductConstent";
+import { useDispatch } from "react-redux";
+import { productsActions } from "../../store/slices/products-slice";
 
-const ProductsFilter = (props) => {
+const ProductsFilter = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onSearchHandler = (value) => {
-    const data = props.products.filter((item) => item.name.includes(value));
-    props.setProducts(data);
+    dispatch(productsActions.findProductsByName(value));
   };
   const onClickSelectHandler = (value) => {
-    value !== undefined
-      ? props.setProducts(props.products)
-      : props.setProducts(
-          props.products.filter((item) => item.category === value)
-        );
+    dispatch(productsActions.findProductsByCategory(value));
+  };
+  const onClearHandler = () => {
+    dispatch(productsActions.clearFilters());
   };
   return (
     <Section>
@@ -29,14 +31,19 @@ const ProductsFilter = (props) => {
             style={{
               width: "14rem",
             }}
+            onClear={onClearHandler}
           >
-            <Select.Option value="أراجيل">أراجيل</Select.Option>
-            <Select.Option value="معسل">معسل</Select.Option>
-            <Select.Option value="مستلزمات">مستلزمات</Select.Option>
+            {PRODUCT_CATEGORY.map((item, index) => (
+              <Select.Option value={index} key={index}>
+                {item}
+              </Select.Option>
+            ))}
           </Select>
+
           <Search
             placeholder="ابحث عن المنتج"
             allowClear
+            onClear={onClearHandler}
             onSearch={onSearchHandler}
             style={{
               width: "14rem",
@@ -45,7 +52,7 @@ const ProductsFilter = (props) => {
         </Space>
         <Button
           onClick={() => {
-            navigate("/products/new");
+            navigate(NEW_PRODUCT_PATH);
           }}
           style={{
             float: "left",
@@ -67,4 +74,4 @@ const ProductsFilter = (props) => {
     </Section>
   );
 };
-export default memo(ProductsFilter);
+export default ProductsFilter;

@@ -1,6 +1,8 @@
 import { Table } from "antd";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { FILTERED_PRODUCTS } from "../../Constents/SelectorsConstent";
 const columns = [
   {
     title: "ID",
@@ -41,7 +43,8 @@ const columns = [
     key: "status",
   },
 ];
-const ProductsTable = (props) => {
-  return <Table columns={columns} dataSource={props.data || []} />;
+const ProductsTable = () => {
+  const products = useSelector(FILTERED_PRODUCTS);
+  return <Table columns={columns} dataSource={products} />;
 };
 export default ProductsTable;

@@ -4,21 +4,15 @@ import Page from "../../components/UI/Page/Page";
 import PageHeader from "../../components/UI/Page/PageHeader";
 import Section from "../../components/UI/Section/Section";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../store/action/product-action";
+import { useDispatch } from "react-redux";
 import ProductsStatistic from "./ProductsStatistic";
 import ProductsFilter from "./ProductsFilter";
-import { useState } from "react";
+import { getProducts } from "../../store/action/products-action";
 const ProductsPage = () => {
-  const products = useSelector((state) => state.products.products);
-  const [productsState, setProductsState] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(getProducts());
   }, []);
-  useEffect(() => {
-    setProductsState(products);
-  }, [products]);
   return (
     <Page>
       <PageHeader
@@ -30,11 +24,11 @@ const ProductsPage = () => {
           },
         ]}
       />
-      <ProductsStatistic products={products} />
-      <ProductsFilter products={products} setProducts={setProductsState} />
+      <ProductsStatistic />
+      <ProductsFilter />
       <Section>
         <Card>
-          <ProductsTable data={productsState} />
+          <ProductsTable />
         </Card>
       </Section>
     </Page>

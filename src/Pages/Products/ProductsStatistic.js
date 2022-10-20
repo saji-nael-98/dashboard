@@ -2,13 +2,16 @@ import { memo } from "react";
 import { BiDollarCircle, BiData } from "react-icons/bi";
 import { Card, Col, Row, Statistic } from "antd";
 import Section from "../../components/UI/Section/Section";
+import { useSelector } from "react-redux";
 
-const ProductsStatistic = (props) => {
+const ProductsStatistic = () => {
+  const {products} = useSelector((state) => state.products);
+
   let totalPrice = 0;
   function calculateTotlePrice(item) {
     totalPrice += item.price * item.inStack;
   }
-  props.products.forEach(calculateTotlePrice);
+  products.forEach(calculateTotlePrice);
   return (
     <Section>
       <Card>
@@ -16,7 +19,7 @@ const ProductsStatistic = (props) => {
           <Col span={4}>
             <Statistic
               title="عدد البضاعة"
-              value={props.products.length}
+              value={products.length}
               prefix={<BiData />}
             />
           </Col>
