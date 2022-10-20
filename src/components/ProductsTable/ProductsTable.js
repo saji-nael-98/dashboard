@@ -71,6 +71,6 @@ const ProductsTable = () => {
     },
   ];
   const products = useSelector(FILTERED_PRODUCTS);
-  return <Table columns={columns} dataSource={products} />;
+  return <Table key={1} columns={columns} dataSource={products} />;
 };
 export default ProductsTable;

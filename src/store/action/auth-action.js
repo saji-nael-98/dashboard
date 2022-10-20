@@ -1,5 +1,7 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { authActions } from "../auth-slice";
+import { APiHeaderWithtoken, LOGIN_URL } from "../../Constents/APIConstents";
+import { authActions } from "../slices/auth-slice";
 
 export const userLogin = (user) => {
   return async (dispatch) => {
@@ -21,8 +23,22 @@ export const userLogin = (user) => {
     try {
       const data = await sendLoginRequest();
       dispatch(authActions.login(data.token));
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
 };
+export const login = createAsyncThunk(
+  "user/login",
+  async (data, { dispatch, rejectWithValue }) => {
+    try {
+      const response = await axios.post(LOGIN_URL, data);
+      dispatch(
+        authActions.saveUserData({
+          userInfo: data,
+          token: response.data.token,
+        })
+      );
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);

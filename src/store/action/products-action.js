@@ -9,7 +9,7 @@ export const getProducts = createAsyncThunk(
   "product/getProducts",
   async (_, { getState }) => {
     try {
-      const token = getState().auth.token;
+      const token = getState().auth.userToken;
       const response = await axios.get(READ_PRODUCTS_URL, {
         headers: APiHeaderWithtoken(token),
       });

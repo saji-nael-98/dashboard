@@ -7,6 +7,8 @@ import Product from "../Pages/Product/Product";
 import NewProduct from "../Pages/Products/NewProduct";
 import ProductsPage from "../Pages/Products/Products";
 import SecureComponent from "./SecureComponent";
+
+
 const RoutesComponent = () => {
   return (
     <Routes>

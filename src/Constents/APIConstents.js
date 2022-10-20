@@ -4,6 +4,8 @@ export const APiHeaderWithtoken = (token) => {
     Authorization: "Bearer " + token,
   };
 };
+//auth
+export const LOGIN_URL = "/api/auth/signIn";
 //product
 export const PRODUCT_URL = "/api/product";
 export const SAVE_PRODUCT_URL = `${PRODUCT_URL}`;

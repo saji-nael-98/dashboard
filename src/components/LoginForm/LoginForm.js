@@ -3,12 +3,12 @@ import { Alert, Form, Input } from "antd";
 import useHttp from "../../hooks/use-http";
 import CButton from "../UI/Button/Button";
 import { useDispatch } from "react-redux";
-import { userLogin } from "../../store/action/auth-action";
+import { login, userLogin } from "../../store/action/auth-action";
 export const LoginForm = (props) => {
   const dispatch = useDispatch();
   const onSubmitHandler = (values) => {
     const user = { username: values.username, password: values.password };
-    dispatch(userLogin(user));
+    dispatch(login(user));
   };
 
   return (

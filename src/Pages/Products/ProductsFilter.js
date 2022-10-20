@@ -43,7 +43,6 @@ const ProductsFilter = () => {
           <Search
             placeholder="ابحث عن المنتج"
             allowClear
-            onClear={onClearHandler}
             onSearch={onSearchHandler}
             style={{
               width: "14rem",

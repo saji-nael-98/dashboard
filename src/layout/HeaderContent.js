@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { AiOutlineUser, AiOutlineNotification } from "react-icons/ai";
 import { BiLogOutCircle } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { authActions } from "../store/auth-slice";
 const StyledHeaderContent = styled.div`
   display: flex;
   & > * {
@@ -32,14 +31,6 @@ const HeaderContent = () => {
       ),
     },
   ];
-  const handleMenuClick = ({ key }) => {
-    switch (key) {
-      case "1": {
-        dispatch(authActions.logout());
-        break;
-      }
-    }
-  };
   return (
     <StyledHeaderContent>
       <div>

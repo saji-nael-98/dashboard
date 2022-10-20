@@ -3,16 +3,27 @@ import { Navigate, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import { LoginForm } from "../../components/LoginForm/LoginForm";
 import { useDispatch, useSelector } from "react-redux";
-import { authActions } from "../../store/auth-slice";
+import { authActions } from "../../store/slices/auth-slice";
 import Page from "../../components/UI/Page/Page";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
-let isInitial = true;
+import { AUTH_SELECTOR } from "../../Constents/SelectorsConstent";
 const Login = () => {
-  const { isAuthenticated } = useSelector((state) => state.auth);
-  if (isAuthenticated) {
-    return <Navigate to={"/products"} replace />;
-  }
+  const { isAuthenticated, userToken, user } = useSelector(AUTH_SELECTOR);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isAuthenticated) {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          user,
+          userToken,
+        })
+      );
+      navigate("/products", { replace: true });
+    }
+  }, [isAuthenticated]);
+
   return (
     <Page>
       <div className={styles["container"]}>
